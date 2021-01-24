@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import Signup from "./component/Signup";
+import Login from "./component/Login";
+import Logo from "./component/Logo"
+import { connect  } from "react-redux";
 
-function App() {
+import { Route, Switch,Redirect } from "react-router-dom";
+import Authentication from "./component/Authentication";
+import Dashboard from "./component/Dashboard";
+
+function App({user}) {
+  console.log(user);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <div>
+   
+    <Switch>
+    <Route path="/signup" component={Signup}/>
+    <Route path="/home" component={Dashboard}/>
+      <Route path="/login" />
+      <Route path="/" render={()=> user.currentUser ?( <Redirect to="/home"/>) :(<Authentication/> ) }/>
+
+    </Switch>
+   
+  </div>
   );
 }
+const mapStateToProps=({userAuth})=>({
+  user:userAuth
+})
 
-export default App;
+export default connect(mapStateToProps,null)(App);
