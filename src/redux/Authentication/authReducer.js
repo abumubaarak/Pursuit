@@ -1,14 +1,14 @@
 import authActionType from "./type";
 
 const currentData={
-    profile:null,
-    isFetching:true,
+    profile:{},
+    isFetching:false,
     currentUser:false,
     error:undefined
 }
 
 const authReducer=(state=currentData,action)=>{
-
+ 
     switch(action.type){
 
         case authActionType.AUTH_START:
@@ -17,10 +17,11 @@ const authReducer=(state=currentData,action)=>{
                 isFetching:true
             }
 
-        case authActionType.AUTH_SUCCESS:
+        case authActionType.AUTH_SUCCESS:  
+ 
             return{
                 ...state,
-                profile:authActionType.payload,
+                profile:action.payload,
                 currentUser:true,
                 isFetching:false
             }
@@ -28,7 +29,7 @@ const authReducer=(state=currentData,action)=>{
             return{
                 ...state,
                 isFetching:false,
-                error:authActionType.payload
+                error:action.payload
             }
 
             default:

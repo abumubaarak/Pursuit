@@ -2,9 +2,10 @@ import React,{Component} from 'react'
 import { FaGoogle } from "react-icons/fa";
  import { GoMarkGithub } from "react-icons/go";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-   import { connect  } from "react-redux";
-import {googleAuth} from "../redux/Authentication/action";
+import { Link } from "react-router-dom"; 
+
+import { connect  } from "react-redux";
+import {googleAuth,githubAuth} from "../redux/Authentication/action";
  
  
 
@@ -13,7 +14,8 @@ import {googleAuth} from "../redux/Authentication/action";
     constructor(props){
         super(props)
         this.handleGoggle = this.handleGoggle.bind(this);
- 
+        this.handleGithub = this.handleGithub.bind(this);
+  
     }
     
     componentDidMount(){
@@ -21,16 +23,25 @@ import {googleAuth} from "../redux/Authentication/action";
         
     }
 
+      
+
     handleGoggle=e=>{
         e.preventDefault()
         this.props.googleAuth()
+    }
+
+    handleGithub=e=>{
+        e.preventDefault()
+        this.props.githubAuth()
     }
       
     render() {
         return (
             <div className="bg-bottom font-custom   bg-bottom bg-cover">
-                <h1 className="text-center font-black  text-4xl font-mono mt-10 font-custom">Pursuit</h1>
-                <div className="h-screen bg-home-bg  py-6 flex flex-col  items-center mt-8  ">
+                  
+                <h1 className="text-center font-extrabold    text-4xl   mt-10 font-custom"  >Pursuit</h1>
+                
+                 <div className="h-screen bg-home-bg  py-6 flex flex-col  items-center mt-8  ">
  
                     <div className="bg-white pt-10 rounded-2xl text-center shadow-lg   px-28 py-5">
     
@@ -45,7 +56,7 @@ import {googleAuth} from "../redux/Authentication/action";
                             <p className="text-gray-500 font-normal">Continue with:</p>
                             <div className="space-x-3 mt-8 mb-4 flex justify-center">
                             <button className="bg-red-500 p-2 text-white text-lg font-medium w-2/5    rounded-lg flex items-center justify-around" onClick={this.handleGoggle}><FaGoogle /> Google</button>
-                            <button className="bg-black p-2 text-white text-lg font-medium   w-2/5 rounded-lg flex items-center justify-around"><GoMarkGithub/>Github</button> 
+                            <button className="bg-black p-2 text-white text-lg font-medium   w-2/5 rounded-lg flex items-center justify-around" onClick={this.handleGithub}><GoMarkGithub/>Github</button> 
                         </div>
                         
                         <button className="bg-white  p-2 text-gray-800 shadow border-2 ring-gray-500 border-gray-100 text-lg font-normal  w-5/6
@@ -66,8 +77,8 @@ import {googleAuth} from "../redux/Authentication/action";
         }
     }
 
-const mapStateToProps=(state)=>({
-    user:state
+const mapStateToProps=({userAuth})=>({
+    user:userAuth
 })
 
-export default connect(mapStateToProps,{ googleAuth})(Authentication)
+export default connect(mapStateToProps,{ googleAuth,githubAuth})(Authentication)
