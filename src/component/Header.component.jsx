@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Header() {
     return (
-        <div className="h-16 bg-white md:fixed md:w-screen md:top-0    md:bottom-0   shadow-sm  flex items-center p-5">
+        <div className="h-16 bg-white md:fixed md:w-screen w-full md:top-0    md:bottom-0   shadow-sm  flex items-center p-5">
         <h1 className=" font-extrabold  text-2xl   font-custom mr-auto md:pl-8">Pursuit</h1>
         <div className="flex items-center">
           <img src="https://img.icons8.com/plasticine/2x/user-male-circle.png" className="rounded-full h-10 w-10"  alt=""/>
