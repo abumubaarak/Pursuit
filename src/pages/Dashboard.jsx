@@ -5,7 +5,6 @@ import search from "../img/search-comb-2.png";
 import { connect  } from "react-redux";
 import { GrBriefcase,GrUser,GrBookmark,GrDocumentVerified } from 'react-icons/gr'
 
-import Jobcard from "../component/Jobcard.component";
 import Search from "../component/Search.component";
 import Navigation from "../component/Navigation.component";
 import Header from "../component/Header.component";

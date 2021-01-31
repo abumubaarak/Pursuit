@@ -1,11 +1,11 @@
 import React,{useEffect,useState} from 'react'
 import { connect } from 'react-redux';
-import Jobcard from '../component/Jobcard.component'
 import {Heading, Skeleton, useDisclosure } from '@chakra-ui/react';
 
 import Model from '../component/Model.component';
 import Search from '../component/Search.component'
 import { getJobFeed } from "../redux/JobFeed/action";
+import JobList from '../component/JobList.component';
 
  function Job({getJobFeed,feed:{isLoading,feed,error}}) {
 
@@ -15,7 +15,7 @@ import { getJobFeed } from "../redux/JobFeed/action";
 
 
       useEffect(() => {
-       // getJobFeed("","")
+        getJobFeed("","")
      }, [])
 
      useEffect(() => {
@@ -27,24 +27,24 @@ import { getJobFeed } from "../redux/JobFeed/action";
       
      }, [search])
      
-     const jobFeed=feed && feed.map((index,i)=>
-        <Jobcard 
-        key={i}
-        feed={index}  
+        const jobFeed=
+        <JobList 
+         feed={feed}  
         onOpen={onOpen} 
         setSeletedJob={setSeletedJob}/>
-        )
- 
+        
     return (
         <div>
             
             <Search setSearch={setSearch}/>
  
+ {jobFeed}
             
-            {isLoading ?  
-            
+            {/* {isLoading ?  
+           :
             jobFeed
-                     }
+                     } */}
+                     
             {selectedJob && <Model  isOpen={isOpen}  onClose={onClose} selectedJob={selectedJob}/>}
  
             

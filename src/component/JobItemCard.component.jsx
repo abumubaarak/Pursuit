@@ -4,11 +4,10 @@ import Time from "./Time";
 import { GrBriefcase,GrUser,GrBookmark,GrDocumentVerified } from 'react-icons/gr'
 import { Tooltip,useDisclosure } from '@chakra-ui/react';
  
-export default function Jobcard({feed,onOpen,setSeletedJob}) {
+export default function JobItemCard({feed,onOpen,setSeletedJob}) {
 
-      const {title,company,location,company_logo,created_at}=feed
+    const {title,company,location,company_logo,created_at}=feed
   
-   
     const handleClick=()=>{
         onOpen() 
         setSeletedJob(feed)
