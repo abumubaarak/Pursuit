@@ -1,10 +1,11 @@
 import React,{useEffect,useState} from 'react'
 import { connect } from 'react-redux';
-import {Heading, Skeleton, useDisclosure } from '@chakra-ui/react';
+import {Heading, useDisclosure } from '@chakra-ui/react';
 
 import Model from '../component/Model.component';
 import Search from '../component/Search.component'
 import { getJobFeed } from "../redux/JobFeed/action";
+import SkeletonLoader from "../component/SkeletonLoader.component";
 import JobList from '../component/JobList.component';
 
  function Job({getJobFeed,feed:{isLoading,feed,error}}) {
@@ -22,7 +23,7 @@ import JobList from '../component/JobList.component';
          
         if(search){
         const {description,location}=search
-      //  getJobFeed(location,description)
+        getJobFeed(location,description)
         }
       
      }, [search])
@@ -38,12 +39,8 @@ import JobList from '../component/JobList.component';
             
             <Search setSearch={setSearch}/>
  
- {jobFeed}
-            
-            {/* {isLoading ?  
-           :
-            jobFeed
-                     } */}
+             
+            {isLoading ? <SkeletonLoader/>: jobFeed }
                      
             {selectedJob && <Model  isOpen={isOpen}  onClose={onClose} selectedJob={selectedJob}/>}
  
