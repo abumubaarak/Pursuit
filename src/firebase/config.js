@@ -2,7 +2,8 @@ import firebase from "firebase/app";
 
 import "firebase/auth";
 import "firebase/firestore";
-
+ 
+ 
 const app=firebase.initializeApp({
      apiKey: "AIzaSyC_dafw8Pk7TngMM943Mt6HkZwWHzBHGUU",
     authDomain: "pursuit-4450f.firebaseapp.com",
@@ -14,7 +15,8 @@ const app=firebase.initializeApp({
  
 export const provider = new firebase.auth.GoogleAuthProvider();
 export const gitHubprovider = new firebase.auth.GithubAuthProvider();
-  
+let date=new Date()
+export const timestamp=date.toString()
 export const auth=app.auth()
 export const firestore=app.firestore()
 

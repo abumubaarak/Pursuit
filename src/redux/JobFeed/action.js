@@ -1,4 +1,6 @@
 import jobActionType from "./type";
+import {  auth,firestore,provider,gitHubprovider } from "../../firebase/config";
+
  
 
 export const jobStart =()=>({
@@ -6,7 +8,7 @@ export const jobStart =()=>({
 })
 
 export const jobSuccess=(data)=>({
-    type:jobActionType.JOB_FEED_SUCCESS,
+    type:jobActionType.JOB_FEED_SUCCESS, 
     payload:data
 })
 
@@ -15,9 +17,18 @@ export const jobError=(data)=>({
     payload:data
 })
 
+ 
+export const appliedSuccess=()=>({
+    type:jobActionType.JOB_APPLIED_SUCCESS
+})
+
+export const appliedError=()=>({
+    type:jobActionType.JOB_APPLIED_ERROR
+})
+
 export const getJobFeed=(location,description)=>dispatch=>{
     dispatch(jobStart())
-    fetch(`https://thawing-island-35644.herokuapp.com/https://jobs.github.com/positions.json?description=${description}&location=${location}`)
+    fetch(`https://thawing-island-35644.herokuapp.com/https://jobs.github.com/positions.json?markdown=true&description=${description}&location=${location}`)
         .then(res=>res.json())
         .then(res=>{
             dispatch(jobSuccess(res))
@@ -25,4 +36,7 @@ export const getJobFeed=(location,description)=>dispatch=>{
         .catch(error=>{
             dispatch(jobError(error))
         })
-}
+
+    }
+
+ 

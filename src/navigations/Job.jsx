@@ -7,17 +7,33 @@ import Search from '../component/Search.component'
 import { getJobFeed } from "../redux/JobFeed/action";
 import SkeletonLoader from "../component/SkeletonLoader.component";
 import JobList from '../component/JobList.component';
+import Error from '../component/Error.component';
 
- function Job({getJobFeed,feed:{isLoading,feed,error}}) {
+ function Job({getJobFeed,feed:{isLoading,feed,error},user:{profile:{uid}}}) {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [selectedJob,setSeletedJob]= useState();
     const [search,setSearch]= useState()
+    const [loadFeed,setLoadFeed]= useState(false)
+    
+    useEffect(() => {
+        if (!feed) {
+            getJobFeed("","")
+        }
+    }, [])
 
 
-      useEffect(() => {
-        getJobFeed("","")
-     }, [])
+    useEffect(() => {
+        console.log(loadFeed + " outside");
+        if (loadFeed) {
+            setLoadFeed(false)
+            
+            getJobFeed("","")
+
+        }
+       // setLoadFeed(false)
+    }, [loadFeed])
+    
 
      useEffect(() => {
          
@@ -28,11 +44,19 @@ import JobList from '../component/JobList.component';
       
      }, [search])
      
-        const jobFeed=
-        <JobList 
-         feed={feed}  
-        onOpen={onOpen} 
-        setSeletedJob={setSeletedJob}/>
+        let jobFeed;
+
+        if (isLoading) {
+            jobFeed= <SkeletonLoader/>
+        }else if(error){
+            jobFeed=<Error 
+            setLoadFeed={setLoadFeed}/>
+        }else{
+            jobFeed= <JobList
+            feed={feed}  
+           onOpen={onOpen} 
+           setSeletedJob={setSeletedJob}/>
+        }
         
     return (
         <div>
@@ -40,9 +64,9 @@ import JobList from '../component/JobList.component';
             <Search setSearch={setSearch}/>
  
              
-            {isLoading ? <SkeletonLoader/>: jobFeed }
+            {jobFeed }
                      
-            {selectedJob && <Model  isOpen={isOpen}  onClose={onClose} selectedJob={selectedJob}/>}
+            {selectedJob && <Model uid={uid}  isOpen={isOpen}  onClose={onClose} selectedJob={selectedJob}/>}
  
             
             

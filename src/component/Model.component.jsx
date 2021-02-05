@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
     Drawer,
     DrawerBody,
@@ -10,18 +10,35 @@ import {
   } from "@chakra-ui/react"
    import companyLogo from '../img/placeholder.png'
  import Time from "./Time";
+ import ReactMarkdown from 'react-markdown'
+import { saveAppliedJob } from "../redux/Applied/action";
+import { saveUserJob } from "../redux/SaveJob/action";
+import { timestamp } from "../firebase/config";
+import { connect } from 'react-redux';
  
-  const ReactMarkdown = require("react-markdown");
-
   
-export default function Model({ isOpen, onClose,selectedJob}) {
- 
- 
-    const {title,company,location,company_logo,created_at,description,how_to_apply}=selectedJob
+ function Model({ isOpen, onClose,selectedJob,saveAppliedJob,saveUserJob}) {
+ //just import uid in the object destructure 
    
+   const [save, setSave] = useState(false);
  
- 
+  
+   const { title, company, location, company_logo, created_at, description, how_to_apply, id } = selectedJob
+        
+   let uid = "LWPqNfL8yqMshLppoowyKJ9uEt02"
 
+   const data = { ...selectedJob, uid, timestamp }
+
+   const handleApply = () => {
+     
+     saveAppliedJob(data, id)
+   
+   }
+ 
+   const handleSave = () => {
+    saveUserJob(data,id)
+    setSave(!save)
+   }
     return (
         <div>
              <Drawer 
@@ -50,23 +67,21 @@ export default function Model({ isOpen, onClose,selectedJob}) {
             <DrawerBody>
 
                 <h1 className="font-semibold text-lg mb-2 text-black font-custom">Description</h1>
-                 <div className="ml-5">
-                    <ReactMarkdown source={description}    escapeHtml={false}/>
-                 </div>
+                <div className="mt-4">
+            <ReactMarkdown children={selectedJob.description} />
+          </div>
                 
                  <h1 className="font-medium text-lg mt-3">Location</h1>
                 <p>{location}</p>
                 <h1 className="font-medium text-lg mt-3">How to Apply</h1>
-                <ReactMarkdown source={how_to_apply}     className=" mb-2"/>
-
+                <div style={{ wordBreak: 'break-all' }} onClick={handleApply}>
+              <ReactMarkdown source={how_to_apply}   linkTarget="_blank"/>
+            </div>
 
              </DrawerBody>
 
             <DrawerFooter>
-              <Button variant="outline" mr={3} onClick={onClose}>
-                Cancel
-              </Button>
-              <Button color="blue">Save</Button>
+              <Button color="blue" variant="outline"  onClick={handleSave}>{save?("Saved!"):("Save")}</Button>
             </DrawerFooter>
           </DrawerContent>
         </DrawerOverlay>
@@ -74,3 +89,4 @@ export default function Model({ isOpen, onClose,selectedJob}) {
         </div>
     )
 }
+export default connect(null,{saveAppliedJob,saveUserJob})(Model)

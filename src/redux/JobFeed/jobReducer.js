@@ -22,14 +22,17 @@ const jobReducers=(state=jobFeed,action)=>{
         return{
             ...state,
             isLoading:false,
-            feed:action.payload
+            feed:action.payload,
+            error:undefined
         }
 
         case jobActionType.JOB_FEED_ERROR:
             return{
+                 
                 error:action.payload,
                 isLoading:false
             }
+
 
         default:
         return{

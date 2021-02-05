@@ -18,7 +18,8 @@ module.exports = {
         'home-bg': "url('/src/img/auth-bg.svg')",
         'bottom': "url('/src/img/wave.svg')",
         'search-1': "url('/src/img/search-comb-1.png')",
-        'search-2': "url('/src/img/search-comb-2.png')"
+         'search-2': "url('/src/img/search-comb-2.png')",
+        'profile-bg':"url('/src/img/profile_bg.png')"
         
       }),
 
@@ -31,7 +32,7 @@ module.exports = {
       }),
 
       flex:{
-        '2':'0 0 50%'
+        '2':'0 0 70%'
       },
       gridTemplateColumns:{
         'card' :'80px 1fr 100px',

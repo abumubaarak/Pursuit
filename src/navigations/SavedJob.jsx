@@ -4,26 +4,30 @@ import JobList from '../component/JobList.component';
 import { useDisclosure } from '@chakra-ui/react';
 
 import SkeletonLoader from '../component/SkeletonLoader.component';
-import { getAppliedJob } from "../redux/Applied/action";
+import { getSavedJob } from "../redux/SaveJob/action"
 import Model from "../component/Model.component";
  
 
-function Applied({getAppliedJob,feed}) {
+function Saved({getSavedJob,feed}) {
     
-    const {appliedJobs:{jobs,isLoading},userAuth:{profile:{uid}}}=feed
+    const {savedJob:{jobs,isLoading},userAuth:{profile:{uid}}}=feed
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [selectedJob,setSeletedJob]= useState();
   
     useEffect(() => {
-        getAppliedJob("LWPqNfL8yqMshLppoowyKJ9uEt02")
+
+        getSavedJob("LWPqNfL8yqMshLppoowyKJ9uEt02")
+
+       
+        
     }, [])
 
   
    
     
 
-    const appliedFeed = <JobList
+    const savedFeed = <JobList
         feed={jobs}
         isApplied={true}
         onOpen={onOpen} 
@@ -31,15 +35,15 @@ function Applied({getAppliedJob,feed}) {
 
      return (
         <div>
-             {isLoading ? <SkeletonLoader /> : appliedFeed}
+             {isLoading ? <SkeletonLoader /> : savedFeed}
              
              {selectedJob && <Model uid={uid}  isOpen={isOpen}  onClose={onClose} selectedJob={selectedJob}/>}
 
         </div>
     )
 }
-const mapStateToProps=({appliedJobs,userAuth})=>({
-    feed:{appliedJobs,userAuth}
+const mapStateToProps=({savedJob,userAuth})=>({
+    feed:{savedJob,userAuth}
 })
 
-export default connect(mapStateToProps,{getAppliedJob})(Applied)
+export default connect(mapStateToProps,{getSavedJob})(Saved)

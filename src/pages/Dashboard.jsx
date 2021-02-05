@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Profile from '../navigations/Profile';
 import Job from '../navigations/Job';
 import Applied from '../navigations/Applied';
-import Saved from '../navigations/Saved';
+import SavedJob from '../navigations/SavedJob';
 
  function Dashboard({user}) {
 
@@ -59,13 +59,13 @@ import Saved from '../navigations/Saved';
 
   switch (navigation) {
     case "job":
-      navigationSelected=<Job/>
+      navigationSelected=<Job user={user}/>
       break;
     case "applied":
       navigationSelected=<Applied/>
       break;
     case "saved":
-      navigationSelected=<Saved/>
+      navigationSelected=<SavedJob/>
       break;
     case "profile":
       navigationSelected=<Profile/>

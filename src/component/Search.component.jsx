@@ -1,5 +1,6 @@
 import React from 'react'
 import { useForm } from "react-hook-form";
+import SearchDescribtion from './SearchDescribtion.component';
 
 export default function Search({setSearch}) {
 
@@ -14,22 +15,25 @@ export default function Search({setSearch}) {
     return (
         <div className="mx-6 mt-8">
 
-        <div className="h-32 bg-white rounded-lg  shadow-sm">
+        <div className="  bg-white rounded-lg  shadow-sm">
 
-          <div className="grid  grid-cols-2 px-6 py-3 gap-6">
+          <div className="md:grid  md:grid-cols-2 px-6 py-3 gap-6">
 
             {/* what */}
-            <div className="flex flex-col">
-              <h1 className="font-bold font-custom text-lg">What</h1>
-              <p className="text-gray-500">Job title, keyword, or company</p>
+            <div className=" text-sm md:text-lg">
+              <SearchDescribtion title="What" 
+              describtion="Job title, keyword, or company" />
+            
               <form onSubmit={handleSubmit(onSubmit)}>
                 <input name="description" ref={register} type="text" className=" border border-transparent focus:outline-none  p-3 my-1 bg-gray-100 rounded-lg w-full placeholder-gray-800 placeholder-opacity-50" placeholder="Ruby developer"/>
               </form>
             </div>
 
-            <div className="">
-              <h1 className="font-bold font-custom text-lg">Where</h1>
-              <p className="text-gray-500">City,State or Country</p>
+            <div className="mt-2 md:mt-0 text-sm md:text-lg">
+              
+            <SearchDescribtion title="Where" 
+              describtion="City,State or Country" />
+            
               <form onSubmit={handleSubmit(onSubmit)}>
 
                 <input name="location" ref={register} type="text" className=" border border-transparent focus:outline-none  p-3 my-1 bg-gray-100 rounded-lg w-full  placeholder-gray-800 placeholder-opacity-50" placeholder="Sidney,London,Munich"/>
