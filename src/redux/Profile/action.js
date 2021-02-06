@@ -18,38 +18,47 @@ export const profileError=(data)=>({
 })
 
  
-export const profileJob=()=>({
-    type:profileActionType.PROFILE_JOB
+export const updateProfile=()=>({
+    type:profileActionType.PROFILE_UPDATE
+})
+
+export const updateDone=()=>({
+    type:profileActionType.PROFILE_UPDATE_DONE
 })
 
 
 
-// export const profileUserJob=(data,jobId)=>dispatch=>{
+export const updateUserProfile = (data, uid) => dispatch => {
+    
+    console.log(data,uid);
+    const { firstname, lastname, email } = data
 
-//     firestore.collection("Saved")
-//     .doc(jobId)
-//     .set(data)
-//     .then(()=>{ 
-//         dispatch(saveJob())
-//     })
-//     .catch(()=>{
-//         dispatch(saveError("Unable to save  job"))
-//     })
-// }
+    firestore.collection("User")
+        .doc(uid)
+        .update({
+            firstname,
+            lastname,
+            email
+        })
+    .then(()=>{ 
+        dispatch(updateProfile())
+        dispatch(updateDone())
+    })
+    .catch((error)=>{
+        dispatch(profileError(error))
+    })
+}
 
 export const getProfile=(uid)=>dispatch=>{
  
     dispatch(profileStart())
-    firestore.collection("User") 
-    .where("uid","==",uid)
-    .get()
-    .then((querySnapshot)=>{
-        querySnapshot.forEach((doc,i)=>{ 
+    firestore.collection("User").doc(uid) 
+        .onSnapshot((doc)=>{ 
             dispatch(profileSuccess(doc.data()))
+        }, (error) =>
+        {
+                 dispatch(profileError(error))
          })
-    })
-    .catch((error)=>{
-          dispatch(profileError(error))
-    })
+ 
 
 }

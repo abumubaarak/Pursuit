@@ -23,22 +23,33 @@ const profileJobReducer=(state=profileFeed,action)=>{
         return{
             ...state,
             isLoading:false,
-            profile:action.payload
+            profile: action.payload,
+            update:false,
+
         }
 
         case profileActionType.PROFILE_ERROR:
             return{ 
                 ...state,
                 error:action.payload,
-                isLoading:false
+                isLoading: false,
+                update:false,
+
             }
 
-        case profileActionType.PROFILE_JOB:
+        case profileActionType.PROFILE_UPDATE:
             return{
-                
-                UPDATE:true,
+                ...state,
+                update:true,
                 isLoading:false
             }
+        
+        case profileActionType.PROFILE_UPDATE_DONE:
+                return{
+                    ...state,
+                    update:false,
+                    isLoading:false
+                }
 
         default:
         return{
