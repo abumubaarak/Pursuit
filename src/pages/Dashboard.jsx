@@ -61,6 +61,7 @@ import SavedJob from '../navigations/SavedJob';
     case "job":
       navigationSelected=<Job user={user}/>
       break;
+    
     case "applied":
       navigationSelected=<Applied/>
       break;
@@ -78,11 +79,18 @@ import SavedJob from '../navigations/SavedJob';
     return (   
           <div>
             <Header/>
-            <div className=" relative md:static sm:relative flex md:flex flex-col md:flex-row md:mt-16  h-screen overflow-visible">
-              <div className="md:my-7 md:rounded-t-2xl md:flex-2 md:mx-auto   bg-jobsearch">
-                {navigationSelected}
-              </div>
-              <Navigation navigation={setNavigation}/>
+            <div className="md:mt-20 md:static flex flex-col md:flex-row md:flex">
+            <div className=" md:rounded-lg md:flex-1 md:mx-auto md:max-w-4xl bg-jobsearch pb-44">
+            {navigationSelected}
+           </div>
+            <div className="md:order-first md:flex-2 ">
+
+            <Navigation navigation={setNavigation}/>
+          </div>
+        
+          {/* <div className="grid grid-cols-4 gap-2 bottom-0 sm:fixed fixed    md:top-10 md:flex md:flex-col md:flex-1 md:pr-3 md:mt-5  bg-white shadow-md md:pt-9 pt-5"> */}
+
+              {/* <Navigation navigation={setNavigation}/> */}
             </div>
           </div>
     )

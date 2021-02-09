@@ -60,10 +60,7 @@ import { connect } from 'react-redux';
                    </div>
                 </div>
                 <Divider/>
-
             </DrawerHeader>
-
- 
             <DrawerBody>
 
                 <h1 className="font-semibold text-lg mb-2 text-black font-custom">Description</h1>

@@ -20,7 +20,7 @@ export default function Search({setSearch}) {
           <div className="md:grid  md:grid-cols-2 px-6 py-3 gap-6">
 
             {/* what */}
-            <div className=" text-sm md:text-lg">
+            <div className=" text-base md:text-lg">
               <SearchDescribtion title="What" 
               describtion="Job title, keyword, or company" />
             
@@ -29,7 +29,7 @@ export default function Search({setSearch}) {
               </form>
             </div>
 
-            <div className="mt-2 md:mt-0 text-sm md:text-lg">
+            <div className="mt-2 md:mt-0 text-base md:text-lg">
               
             <SearchDescribtion title="Where" 
               describtion="City,State or Country" />

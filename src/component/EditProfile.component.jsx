@@ -57,7 +57,7 @@ function EditProfile({user: {profile,isLoading,update},updateUserProfile}) {
     }
  
     return (
-        <div className="bg-white shadow-sm    w-11/12 mr-4 ml-5 rounded-lg px-5 py-3">
+        <div className="bg-white shadow-sm  mt-7 md:mt-0   w-11/12 mr-4 ml-5 rounded-lg px-5 py-3">
             <h1 className="font-custom font-bold pt-2 leading-9 text-2xl">Account Details</h1>
             <p className=" text-gray-500 text-lg pt-1">Edit your account details</p>
             <div className="md:grid  md:grid-cols-2  gap-6 ">

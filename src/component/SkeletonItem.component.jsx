@@ -18,7 +18,7 @@ export default function SkeletonItem() {
                         <div > Content</div>
                     </Skeleton> 
                     
-                    <Skeleton rounded="xl" className="w-4/12 h-3 mt-5">
+                    <Skeleton rounded="xl" className="w-5/12 h-3 mt-5">
                         <div > Content</div>  
                     </Skeleton> 
                 </Flex>

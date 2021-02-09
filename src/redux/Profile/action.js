@@ -53,8 +53,11 @@ export const getProfile=(uid)=>dispatch=>{
  
     dispatch(profileStart())
     firestore.collection("User").doc(uid) 
-        .onSnapshot((doc)=>{ 
-            dispatch(profileSuccess(doc.data()))
+        .onSnapshot((doc) =>
+        { 
+            if (doc.data()) {
+                            dispatch(profileSuccess(doc.data()))
+            }
         }, (error) =>
         {
                  dispatch(profileError(error))

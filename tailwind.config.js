@@ -28,14 +28,17 @@ module.exports = {
       },
 
       backgroundColor:theme=>({
-        'jobsearch':'#EBEFF4'
+        'jobsearch':'#F9FAFE'
       }),
 
       flex:{
-        '2':'0 0 70%'
+        '2': '0 0 18%',
+        '3':'0 0 100%'
+
       },
       gridTemplateColumns:{
-        'card' :'80px 1fr 100px',
+        'card': '80px 1fr 100px',
+        'mobile':'70px 1fr'
       }
     },
   },

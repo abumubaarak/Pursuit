@@ -12,30 +12,32 @@ export default function JobItemCard({feed,onOpen,setSeletedJob,isApplied}) {
         onOpen() 
         setSeletedJob(feed)
     }
-     
+ 
     return (                
          <div>
-                <div className=" mx-6 grid cursor-pointer bg-white shadow-lg grid-cols-card  rounded-md mt-5 p-2" onClick={handleClick}>
-                  <img src={company_logo?company_logo:companyLogo} className="w-16 h-16 rounded-full object-contain" alt="Company Logo"/>
-                  <div className="flex flex-col">
-                    <h1 className="text-black font-bold font-custom">{title}</h1>
-                    <p className="text-gray-600 text-lg font-medium">{company}</p>
-                    {isApplied ? (<> <Time date={feed.timestamp} /></>) :  <Time date={created_at}/>}
-                    
+                   <div className=" mx-6 grid break-all cursor-pointer bg-white shadow-sm grid-cols-mobile md:grid-cols-card  rounded-md mt-5 p-2" onClick={handleClick}>
+                  <img src={company_logo?company_logo:companyLogo} className="w-16 h-16 rounded-full object-contain justify-self-center self-center" alt="Company Logo"/>
+                  <div className="flex flex-col  p-2">
+            <h1 className="text-black   font-bold pr-4 md:pr-0 text-xl
+                     font-custom">{title}</h1>
+            <p className="text-gray-600 text-base md:text-lg font-medium font-custom">{company}</p>
+            {isApplied ? (<> <Time date={feed.timestamp} /></>) :
+              <>
+                <div className="flex items-center text-base">
+                <Time date={created_at} />  <p className="text-base pl-3">{location}</p>
+
+                </div>
+              </>}
+   
                    </div>
                   <div className="flex flex-col justify-between items-center">
-                    {isApplied ? null :
-                    (<Tooltip   placement="left" hasArrow className="bg-purple-300" label="Bookmark" fontSize="md">
                      
-                  <span><GrBookmark className="w-10 h-6"/></span>
-                  </Tooltip>)
-                    }
-                  
-                   <p className="font-normal truncate ...">{location}</p>
-                  </div>
+                  {/* <p className="font-normal truncate ...">{location}</p> */}
+
+                   </div>
                  
                 </div>
-                 
+                     
         </div>
     )
 }
