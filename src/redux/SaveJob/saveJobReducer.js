@@ -41,9 +41,7 @@ const saveJobReducer=(state=saveFeed,action)=>{
             }
 
         default:
-        return{
-            ...state
-        }
+        return state
     }
 }
 

@@ -35,9 +35,8 @@ const jobReducers=(state=jobFeed,action)=>{
 
 
         default:
-        return{
-            ...state
-        }
+        return state
+        
     }
 }
 

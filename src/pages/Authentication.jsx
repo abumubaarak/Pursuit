@@ -18,13 +18,7 @@ import {googleAuth,githubAuth} from "../redux/Authentication/action";
   
     }
     
-    componentDidMount(){
-        console.log(this.props);
-        
-    }
-
-      
-
+   
     handleGoggle=e=>{
         e.preventDefault()
         this.props.googleAuth()
@@ -37,9 +31,9 @@ import {googleAuth,githubAuth} from "../redux/Authentication/action";
       
     render() {
         return (
-            <div className="bg-bottom font-custom   bg-bottom bg-cover">
+            <div className="bg-bottom  font-custom   bg-bottom bg-cover">
                   
-                <h1 className="text-center font-extrabold    text-4xl   mt-10 font-custom"  >Pursuit</h1>
+                  <h1 className=" font-black  text-4xl   font-nuito mr-auto md:pl-8 text-logo">Pursuit</h1>
                 
                  <div className="h-screen bg-home-bg  py-6 flex flex-col  items-center mt-8  ">
  

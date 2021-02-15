@@ -79,12 +79,11 @@ import SavedJob from '../navigations/SavedJob';
     return (   
           <div>
             <Header/>
-            <div className="md:mt-20 md:static flex flex-col md:flex-row md:flex">
-            <div className=" md:rounded-lg md:flex-1 md:mx-auto md:max-w-4xl bg-jobsearch pb-44">
+            <div className="   flex flex-col md:flex-row h-screen md:flex">
+            <div className=" md:mt-20 md:rounded-lg md:overflow-y-scroll    md:flex-1 md:mx-auto md:max-w-6xl bg-main-2 pb-44">
             {navigationSelected}
            </div>
-            <div className="md:order-first md:flex-2 ">
-
+            <div className="pt-24 md:items-stretch md:order-first md:flex-2 shadow-md">
             <Navigation navigation={setNavigation}/>
           </div>
         

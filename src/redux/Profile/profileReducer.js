@@ -51,10 +51,21 @@ const profileJobReducer=(state=profileFeed,action)=>{
                     isLoading:false
                 }
 
+        case "LOGOUT_SUCCESS":
+            return {
+                isLoading:false,
+                profile:null,
+                update:null,
+                error:undefined
+            }
+        case "LOGOUT_ERROR":
+            return {
+                    ...state,
+                    error:action.payload
+                }
+            
         default:
-        return{
-            ...state
-        }
+        return state
     }
 }
 

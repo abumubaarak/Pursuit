@@ -10,7 +10,8 @@ module.exports = {
       'full': '100%',
      },
      fontFamily:{
-       'custom':['DM Sans ']
+       'custom': ['DM Sans '],
+       'nuito':['Nunito']
      },
      extend: {
 
@@ -28,14 +29,28 @@ module.exports = {
       },
 
       backgroundColor:theme=>({
-        'jobsearch':'#F9FAFE'
+        'jobsearch': '#F9FAFE',
+        'main': '#FCFDFF',
+        'main-2': '#F0F4F8',
+
+
       }),
 
       flex:{
-        '2': '0 0 18%',
+        '2': '0 0 14%',
         '3':'0 0 100%'
 
-      },
+       },
+       screens: {
+        'md-sm':'768px'
+       },
+       boxShadow: {
+         'main':'rgba(0, 0, 0, 0.15) 0px 4px 16px 0px'
+       },
+       colors: {
+         'main': '#FCFDFF',
+         'logo':'#0c008c'
+       },
       gridTemplateColumns:{
         'card': '80px 1fr 100px',
         'mobile':'70px 1fr'

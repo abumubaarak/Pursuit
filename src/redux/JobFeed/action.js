@@ -26,9 +26,9 @@ export const appliedError=()=>({
     type:jobActionType.JOB_APPLIED_ERROR
 })
 
-export const getJobFeed=(location,description)=>dispatch=>{
+export const getJobFeed=(location,description,page)=>dispatch=>{
     dispatch(jobStart())
-    fetch(`https://thawing-island-35644.herokuapp.com/https://jobs.github.com/positions.json?markdown=true&description=${description}&location=${location}`)
+    fetch(`https://thawing-island-35644.herokuapp.com/https://jobs.github.com/positions.json?markdown=true&description=${description}&location=${location}&page=${page}`)
         .then(res=>res.json())
         .then(res=>{
             dispatch(jobSuccess(res))
@@ -37,6 +37,6 @@ export const getJobFeed=(location,description)=>dispatch=>{
             dispatch(jobError(error))
         })
 
-    }
+}
 
  

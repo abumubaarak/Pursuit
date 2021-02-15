@@ -14,7 +14,10 @@ function Profile({ getProfile, user })
     const { profile, isLoading, error } = user
     const [loadFeed,setLoadFeed]= useState(false)
 
-       useEffect(() => {
+    useEffect(() =>
+    {
+           
+        // There is no need to fetch user account again 
         getProfile("LWPqNfL8yqMshLppoowyKJ9uEt02")
          
        }, [])

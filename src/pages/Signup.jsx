@@ -6,6 +6,7 @@ import { connect  } from "react-redux";
 import required from "../utills/utill";
  import { useForm } from "react-hook-form";
 import { signUp } from "../redux/Authentication/action";
+import Logo from '../component/Logo';
  
 
  function Signup(props) {
@@ -31,7 +32,7 @@ import { signUp } from "../redux/Authentication/action";
             title: `Error ❌`,
             description: message,
             status: "error",
-            duration: 5000,
+            duration: 3000,
             isClosable: true,
           })
     }
@@ -71,22 +72,20 @@ import { signUp } from "../redux/Authentication/action";
    
 
     return (
-        <div className="bg-bottom font-custom   bg-bottom bg-cover">
-
-             <h1 className="text-center font-black  text-4xl font-mono mt-10 font-custom">Pursuit</h1>
-
-             <div className="h-screen bg-home-bg  py-6 flex flex-col  items-center mt-8  ">
-
-                <div className="bg-white pt-10 rounded-2xl text-center shadow-lg   px-28 py-5">
-
-                    <h1 className="text-4xl font-normal    font-custom">Sign up to get started</h1>
-                 
+        
+        <div className="bg-bottom font-custom h-screen    bg-cover">
+        <Logo />
+            
+        <div className="z-40  px-7  shadow-main text-center mx-5 sm:mx-auto  pb-3 pt-4 md:mx-auto md:max-w-lg max-w-md   rounded-xl ">
+            <Back /> 
+            <h1 className="font-normal text-center text-3xl font-nuito pt-4">Sign in to get Started</h1>
+                    
                     <motion.div 
                      initial={{opacity:0}}
                     animate={{y:"-1vh",opacity:1}} 
                     transition={{ duration: 0.5 }}
-                    className="mt-9 mb-2 pt-5 pb-1 px-5 visible " >
-                        <Back/>
+                    className="mt-5 mb-2 pt-5 pb-1 px-5 visible " >
+                       
                          <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col mx-1">
                              <input type="text" name="firstname" ref={register(required)} placeholder="First Name" className=" mt-4  py-3 pl-6 border-2  border-gray-100 w-full placeholder-gray-500 placeholder-opacity-50 font-normal rounded-md text-xl  "/>
                              <input type="text" name="lastname" ref={register(required)} placeholder="Last Name" className="my-4 py-3 pl-6 border-2  border-gray-100 w-full placeholder-gray-500 placeholder-opacity-50 font-normal rounded-md text-xl  "/>
@@ -97,10 +96,9 @@ import { signUp } from "../redux/Authentication/action";
 
                     </motion.div>
                     
-                    <p className="text-purple-600 font-semibold text-sm pb-4">Forgot password?</p>
-                </div>
+                 </div>
             </div>
-        </div>
+        
 
              
      )

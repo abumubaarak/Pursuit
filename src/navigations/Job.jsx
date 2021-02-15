@@ -4,23 +4,36 @@ import {Heading, useDisclosure } from '@chakra-ui/react';
 
 import Model from '../component/Model.component';
 import Search from '../component/Search.component'
-import { getJobFeed } from "../redux/JobFeed/action";
+import { getJobFeed,getJobFeedpage } from "../redux/JobFeed/action";
 import SkeletonLoader from "../component/SkeletonLoader.component";
 import JobList from '../component/JobList.component';
 import Error from '../component/Error.component';
+import InfiniteScroll from 'react-infinite-scroller';
+
 
  function Job({getJobFeed,feed:{isLoading,feed,error},user:{profile:{uid}}}) {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [selectedJob,setSeletedJob]= useState();
     const [search,setSearch]= useState()
+    const [searchOn ,setSearchOn]=useState(false)
     const [loadFeed,setLoadFeed]= useState(false)
     
+     console.log(feed);
+     let page=0
     useEffect(() => {
-        if (!feed) {
-            getJobFeed("","")
-        }
+         if (!feed) {
+            getJobFeed("","",1)
+
+          }
     }, [])
+     
+     useEffect(() => {
+         if (searchOn) {
+            
+        getJobFeed("","",1)  
+          }
+     }, [searchOn])
 
 
     useEffect(() => {
@@ -28,7 +41,7 @@ import Error from '../component/Error.component';
         if (loadFeed) {
             setLoadFeed(false)
             
-            getJobFeed("","")
+            getJobFeed("","",1)
 
         }
        // setLoadFeed(false)
@@ -39,7 +52,7 @@ import Error from '../component/Error.component';
          
         if(search){
         const {description,location}=search
-        getJobFeed(location,description)
+        getJobFeed(location,description,1)
         }
       
      }, [search])
@@ -61,10 +74,18 @@ import Error from '../component/Error.component';
     return (
         <div>
             
-            <Search setSearch={setSearch}/>
- 
-             
-            {jobFeed }
+            <Search setSearch={setSearch} setSearchOn={setSearchOn} />
+            {/* <InfiniteScroll
+                pageStart={0}
+                loadMore={() => getJobFeedpage(2)}
+                hasMore={true || false}
+                loader={<div className="loader" key={0}>Loading NOW ...</div>}>
+                 */}
+                      {jobFeed}
+
+
+            {/* </InfiniteScroll> */}
+              
                      
             {selectedJob && <Model uid={uid}  isOpen={isOpen}  onClose={onClose} selectedJob={selectedJob}/>}
  

@@ -40,9 +40,7 @@ const appliedJobReducer=(state=appliedFeed,action)=>{
             }
 
         default:
-        return{
-            ...state
-        }
+        return state
     }
 }
 

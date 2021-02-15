@@ -8,6 +8,7 @@ import { connect  } from "react-redux";
 import  required  from "../utills/utill";
 import {useForm} from 'react-hook-form'
 import { login } from "../redux/Authentication/action";
+import Logo from '../component/Logo';
 
  
 
@@ -58,41 +59,35 @@ console.log(props);
          
     }
 
-    return (
-        <div className="bg-bottom font-custom   bg-bottom bg-cover">
+     return (
+        <div className="bg-bottom font-custom h-screen    bg-cover">
+        <Logo />
+            
+            <div className="z-40  px-7  shadow-main text-center mx-5 sm:mx-auto  pb-7 pt-4 md:mx-auto md:max-w-lg max-w-md   rounded-xl ">
+            <Back />      
 
-            <h1 className="text-center font-black  text-4xl font-mono mt-10 font-custom">Pursuit</h1>
-
-            <div className="h-screen bg-home-bg  py-6 flex flex-col  items-center mt-8  ">
-
-                <div className="bg-white pt-10 rounded-2xl text-center shadow-lg   px-28 py-5">
-
-                    <h1 className="text-4xl font-normal    font-custom">Sign up to get started</h1>
+            <h1 className="font-normal text-center text-3xl font-nuito pt-4">Sign in to get Started</h1>
                     
                     <motion.div 
                      initial={{opacity:0}}
                     animate={{y:"-2vh",opacity:1}} 
                     transition={{ duration: 0.5 }}
-                    className="mt-9 mb-2 pt-5 pb-1 px-5 visible " >
+                    className="mt-5 mb-2 pt-5 pb-1 px-5 visible " >
 
-                        <Back />      
-                                          
-                        <form className="flex flex-col   mx-1" onSubmit={handleSubmit(onSubmit)}>
+                                           
+                        <form className="flex flex-col   mx-1 mt-2" onSubmit={handleSubmit(onSubmit)}>
 
-                             <input ref={register(required)} type="text" name="email" placeholder="Email" className="my-4 py-3 pl-6 border-2  border-gray-100 w-full placeholder-grey-300 font-normal rounded-md text-xl  "/>
-                             <input name="password" ref={register(required)} type="password" placeholder="password" className=" mb-4 py-3 pl-6 border-2 border-gray-100 w-full placeholder-grey-500 font-normal rounded-md text-xl  "/>
+                             <input ref={register(required)} type="text" name="email" placeholder="Email" className="my-4 py-3  pl-6 border-2  border-gray-100 w-full placeholder-grey-300 font-normal rounded-md text-xl  "/>
+                             <input name="password" ref={register(required)} type="password" placeholder="password" className=" mb-4 py-3 pl-6 border-2 w-full placeholder-grey-500 font-normal rounded-md text-xl  "/>
 
                              <Button type="submit" isLoading={isFetching}    variant="solid" colorScheme="blue-500" p={6}   className="bg-blue-500 text-white p-2 font-light  border-2 mb-4   border-gray-100 text-lg   w-full">Continue</Button>
                         
                          </form>
 
                     </motion.div>
- 
-                  
-                     <p className="text-purple-600 font-semibold text-sm pb-4">Forgot password?</p>
-                  
-                </div>
+              
             </div>
+            
         </div>
 
              

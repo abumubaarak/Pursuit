@@ -65,3 +65,23 @@ export const getProfile=(uid)=>dispatch=>{
  
 
 }
+
+export const logout = () => dispatch =>
+{
+    dispatch({
+        type:'LOGOUT_START'
+    })
+ 
+    auth.signOut().then(() =>
+    {
+        dispatch({
+            type:'LOGOUT_SUCCESS'
+        }) 
+    }).catch((error) =>
+    {
+        dispatch({
+            type: 'LOGOUT_ERROR',
+            payload:error
+        }) 
+   })
+}
