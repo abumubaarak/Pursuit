@@ -19,11 +19,11 @@ import InfiniteScroll from 'react-infinite-scroller';
     const [searchOn ,setSearchOn]=useState(false)
     const [loadFeed,setLoadFeed]= useState(false)
     
-     console.log(feed);
-     let page=0
+  
     useEffect(() => {
          if (!feed) {
-            getJobFeed("","",1)
+             getJobFeed("", "", 1)
+             //getProfile("LWPqNfL8yqMshLppoowyKJ9uEt02")
 
           }
     }, [])

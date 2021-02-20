@@ -13,46 +13,69 @@ import 'react-toastify/dist/ReactToastify.css';
 import Profile from '../navigations/Profile';
 import Job from '../navigations/Job';
 import Applied from '../navigations/Applied';
+import { getProfile } from "../redux/Profile/action";
+
 import SavedJob from '../navigations/SavedJob';
 
- function Dashboard({user}) {
+ function Dashboard({user,getProfile,history}) {
 
-  const [navigation ,setNavigation]= useState("job");
- 
+   const [navigation, setNavigation] = useState("job");
+   const { profile, isLoading, error } = user
 
-  // const toast = useToast()
+   console.log(profile.uid);
 
-  // useEffect(() => {
+    useEffect(() =>
+    {
+      if (profile.uid) {
+              getProfile(profile.uid)
+      } else {
+        history.push("/")
 
-  //   const {displayName,email}=user?.profile;
+      }
+  
+    }, [])
+   
+   useEffect(() => {
+      
+     if (!profile.uid) {
+       history.push("/")
+     }
+   }, [profile.uid])
 
-  //   let firstname
-     
-  //   if(!displayName){
-
-  //     const splitName=email?.split("@")
     
-  //      firstname=splitName[0]
+  const toast = useToast()
+
+  useEffect(() => {
+
+    const {displayName,email}=user?.profile;
+
+    let firstname
+     
+    if(!displayName){
+
+      const splitName=email?.split("@")
+    
+       firstname=splitName[0]
 
        
-  //   }else{
+    }else{
 
-  //     const splitName=displayName?.split(" ")
+      const splitName=displayName?.split(" ")
     
-  //    firstname=splitName[0] 
-  //   }
+     firstname=splitName[0] 
+    }
     
 
-  // toast({
-  //         position: "top-right",
-  //         title: `Welcome ${ firstname } 👋 !`,
-  //         description: "Pursuit your next Job ❤️‍🔥",
-  //         status: "success",
-  //         duration: 5000,
-  //         isClosable: true,
-  //       })
+  toast({
+          position: "top-right",
+          title: `Welcome ${ firstname } 👋 !`,
+          description: "Pursuit your next Job ❤️‍🔥",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        })
      
-  // }, [a])
+  }, [])
 
 
   let navigationSelected
@@ -61,7 +84,6 @@ import SavedJob from '../navigations/SavedJob';
     case "job":
       navigationSelected=<Job user={user}/>
       break;
-    
     case "applied":
       navigationSelected=<Applied/>
       break;
@@ -78,7 +100,7 @@ import SavedJob from '../navigations/SavedJob';
  
     return (   
           <div>
-            <Header/>
+            <Header history={history}/>
             <div className="   flex flex-col md:flex-row h-screen md:flex">
             <div className=" md:mt-20 md:rounded-lg md:overflow-y-scroll    md:flex-1 md:mx-auto md:max-w-6xl bg-main-2 pb-44">
             {navigationSelected}
@@ -86,12 +108,8 @@ import SavedJob from '../navigations/SavedJob';
             <div className="pt-24 md:items-stretch md:order-first md:flex-2 shadow-md">
             <Navigation navigation={setNavigation}/>
           </div>
-        
-          {/* <div className="grid grid-cols-4 gap-2 bottom-0 sm:fixed fixed    md:top-10 md:flex md:flex-col md:flex-1 md:pr-3 md:mt-5  bg-white shadow-md md:pt-9 pt-5"> */}
-
-              {/* <Navigation navigation={setNavigation}/> */}
-            </div>
-          </div>
+        </div>
+      </div>
     )
 }
 
@@ -101,4 +119,4 @@ const mapStateToProps=({userAuth})=>({
   user:userAuth
 })
 
-export default connect(mapStateToProps,null)(Dashboard);
+export default connect(mapStateToProps,{getProfile})(Dashboard);

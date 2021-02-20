@@ -18,7 +18,7 @@ function Profile({ getProfile, user })
     {
            
         // There is no need to fetch user account again 
-        getProfile("LWPqNfL8yqMshLppoowyKJ9uEt02")
+//getProfile("LWPqNfL8yqMshLppoowyKJ9uEt02")
          
        }, [])
     
@@ -60,4 +60,4 @@ const mapStateToProps = ({ profile }) => ({
     user:profile
 })
 
-export default connect(mapStateToProps,{getProfile})(Profile)
+export default connect(mapStateToProps,null)(Profile)

@@ -10,10 +10,10 @@ export default function Search({setSearch,setSearchOn}) {
 
   const onSubmit = (data) =>
   {
-    if (data) { 
-      setSearch(data)
+    
+     if (data && data.location || data.description) { 
+       setSearch(data)
       setClearSearch(true)
-
      }
         
   }
