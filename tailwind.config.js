@@ -53,6 +53,7 @@ module.exports = {
        },
       gridTemplateColumns:{
         'card': '80px 1fr 100px',
+        'modal':'50px 1fr 30px',
         'mobile':'70px 1fr'
       }
     },

@@ -51,11 +51,11 @@ import { connect } from 'react-redux';
           <DrawerContent>
             <DrawerCloseButton />
             <DrawerHeader>
-                <div className="grid grid-cols-card">
-               <img src={company_logo?company_logo:companyLogo} className="w-16 h-16 rounded-full object-contain" alt="Company Logo"/>
-                  <div className="flex flex-col">
-                    <h1 className="text-black font-bold font-custom">{title} </h1>
-                    <p className="text-gray-600 text-lg font-medium">{company} </p>
+                <div className="grid grid-cols-modal">
+               <img src={company_logo?company_logo:companyLogo} className="w-14 h-12 rounded-full object-contain col-span-full -mt-2" alt="Company Logo"/>
+                  <div className="flex flex-col  col-span-2 mr-4 md:mr-0 pt-3">
+                    <h1 className="text-black md:font-bold md:font-nuito font-nuito  text-base ">{title} </h1>
+                    <p className="text-gray-500 text-sm  ">{company} </p>
                     <Time date={created_at}/>
                    </div>
                 </div>
