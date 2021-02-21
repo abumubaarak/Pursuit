@@ -14,7 +14,7 @@ export default function JobList({feed,onOpen,setSeletedJob,isApplied}) {
                   />)
 
     return (
-        <div>
+        <div className="mt-10">
             {jobItem}
         </div>
     )

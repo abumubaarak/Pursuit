@@ -23,8 +23,7 @@ import InfiniteScroll from 'react-infinite-scroller';
     useEffect(() => {
          if (!feed) {
              getJobFeed("", "", 1)
-             //getProfile("LWPqNfL8yqMshLppoowyKJ9uEt02")
-
+ 
           }
     }, [])
      

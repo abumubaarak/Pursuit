@@ -3,7 +3,8 @@ import saveActionType from './type'
 const saveFeed={
     isLoading:false,
     jobs:null,
-    save:null,
+    save: null,
+    empty:null,
     error:undefined
 }
 
@@ -23,7 +24,8 @@ const saveJobReducer=(state=saveFeed,action)=>{
         return{
             ...state,
             isLoading:false,
-            jobs:action.payload
+            jobs: action.payload,
+            empty:null
         }
 
         case saveActionType.SAVE_ERROR:
@@ -40,6 +42,10 @@ const saveJobReducer=(state=saveFeed,action)=>{
                 isLoading:false
             }
 
+            case "empty":
+                return {
+                    empty:true
+                }
         default:
         return state
     }

@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import { GrBriefcase,GrUser,GrBookmark,GrDocumentVerified } from 'react-icons/gr'
-import { IoBriefcaseOutline,IoBookmarksOutline,IoReceiptOutline,IoPersonOutline } from 'react-icons/io5'
+ import { IoBriefcaseOutline,IoBookmarksOutline,IoReceiptOutline,IoPersonOutline } from 'react-icons/io5'
 
 export default function Navigation({navigation}) {
  

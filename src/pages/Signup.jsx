@@ -78,13 +78,13 @@ import Logo from '../component/Logo';
             
         <div className="z-40  px-7  shadow-main text-center mx-5 sm:mx-auto  pb-3 pt-4 md:mx-auto md:max-w-lg max-w-md   rounded-xl ">
             <Back /> 
-            <h1 className="font-normal text-center text-3xl font-nuito pt-4">Sign in to get Started</h1>
+            <h1 className="font-normal text-center text-2xl font-nuit pt-10">Sign in to get Started</h1>
                     
                     <motion.div 
                      initial={{opacity:0}}
                     animate={{y:"-1vh",opacity:1}} 
                     transition={{ duration: 0.5 }}
-                    className="mt-5 mb-2 pt-5 pb-1 px-5 visible " >
+                    className="mt-3 mb-2 pt-5 pb-1 md:px-5 visible " >
                        
                          <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col mx-1">
                              <input type="text" name="firstname" ref={register(required)} placeholder="First Name" className=" mt-4  py-3 pl-6 border-2  border-gray-100 w-full placeholder-gray-500 placeholder-opacity-50 font-normal rounded-md text-xl  "/>

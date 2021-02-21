@@ -2,13 +2,15 @@ import appliedActionType from './type'
 
 const appliedFeed={
     isLoading:false,
-    jobs:null,
+    jobs: null,
+    empty:null,
     applied:null,
     error:undefined
 }
 
 const appliedJobReducer=(state=appliedFeed,action)=>{
 
+    console.log(action.type);
     switch(action.type){
 
         case appliedActionType.APPLIED_START:
@@ -22,7 +24,8 @@ const appliedJobReducer=(state=appliedFeed,action)=>{
         return{
             ...state,
             isLoading:false,
-            jobs:action.payload
+            jobs: action.payload,
+            empty:false
         }
 
         case appliedActionType.APPLIED_ERROR:
@@ -37,6 +40,10 @@ const appliedJobReducer=(state=appliedFeed,action)=>{
                 
                 applied:true,
                 isLoading:false
+            }
+        case "empty":
+            return {
+                empty:true
             }
 
         default:

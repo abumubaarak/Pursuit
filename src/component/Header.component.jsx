@@ -44,7 +44,7 @@ function Header({ user,logout })
   </MenuButton>
   <MenuList>
     <MenuGroup>
-      <MenuItem onClick={()=>signout()}>Logout</MenuItem>
+      <MenuItem className="focus:border-none" onClick={()=>signout()}>Logout</MenuItem>
      </MenuGroup> 
   </MenuList>
 </Menu>
