@@ -25,10 +25,9 @@
 
 ## Screenshots 
 
-
 ### Desktop
-![IMAGE](https://github.com/realDeve/Pursuit/blob/master/main.jpg?raw=true)
-
+[IMAGE](https://github.com/realDeve/Pursuit/blob/master/desk-1.jpg?raw=true) · [IMAGE](https://github.com/realDeve/Pursuit/blob/master/desk-2.jpg?raw=true) ·
+[IMAGE](https://github.com/realDeve/Pursuit/blob/master/desk-3.jpg?raw=true)
 
 
 ### Mobile
