@@ -1,6 +1,6 @@
 ![alt text](https://github.com/realDeve/Pursuit/blob/master/mobile-view.jpg?raw=true)
 <h1 align="center">Pursuit</h1>
-<p align="center">A job portal webapp</p
+<p align="center">A job portal webapp</p>
  
 ## Features
 - Authentication(Google,Github and email/password)
