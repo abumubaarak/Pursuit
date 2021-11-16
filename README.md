@@ -32,4 +32,4 @@
 
 
 ### Mobile
-![IMAGE](https://github.com/realDeve/Pursuit/blob/master/mobile-view.jpg?raw=true)
+![IMAGE](https://github.com/realDeve/Pursuit/blob/master/mobile-v.jpg?raw=true)
