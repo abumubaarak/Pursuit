@@ -24,7 +24,9 @@ export const appliedError = () => ({
 
 export const getJobFeed = (location, description, page) => (dispatch) => {
   dispatch(jobStart());
-  fetch(`https://pursuit-backend.herokuapp.com?desciption=${desciption}&locaion=${location}`)
+  fetch(
+    `https://pursuit-backend.herokuapp.com?description=${description}&location=${location}`
+  )
     .then((res) => res.json())
     .then((res) => {
       dispatch(jobSuccess(res));
