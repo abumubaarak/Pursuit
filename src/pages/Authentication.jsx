@@ -1,14 +1,14 @@
-import React,{Component} from 'react'
-import { FaGoogle } from "react-icons/fa";
- import { GoMarkGithub } from "react-icons/go";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom"; 
-import   blob from "../img/blob.svg";
-import   blobRight from "../img/blob_2.svg";
-
-import { connect  } from "react-redux";
-import {googleAuth,githubAuth} from "../redux/Authentication/action";
+import React from 'react';
+import { FaGoogle } from "react-icons/fa";
+import { GoMarkGithub } from "react-icons/go";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import Logo from '../component/Logo';
+import blob from "../img/blob.svg";
+import blobRight from "../img/blob_2.svg";
+import { githubAuth, googleAuth } from "../redux/Authentication/action";
+
  
  
 

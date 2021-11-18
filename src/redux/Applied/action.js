@@ -43,10 +43,12 @@ export const getAppliedJob=(uid)=>dispatch=>{
 
     dispatch(appliedStart())
     firestore.collection("Applied") 
-    .where("uid","==",uid)
+    .where("uid","==",uid) 
     .get()
     .then((querySnapshot)=>{
-        querySnapshot.forEach((doc,i)=>{
+        querySnapshot.forEach((doc, i) =>
+        {
+            console.log(querySnapshot.size)
              job.push(doc.data())
             dispatch(appliedSuccess(job))
          })

@@ -1,63 +1,50 @@
-import React,{useEffect,useState} from 'react' 
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import EditProfile from "../component/EditProfile.component";
+import Error from "../component/Error.component";
+import ProfileCard from "../component/ProfileCard.component";
+import SkeletonLoader from "../component/SkeletonLoader.component";
 
-import profile from "../img/user-male.png";
- import ProfileCard from '../component/ProfileCard.component';
-import EditProfile from '../component/EditProfile.component';
-import { connect } from 'react-redux';
-import { getProfile } from "../redux/Profile/action";
-import SkeletonLoader from '../component/SkeletonLoader.component';
-import Error from '../component/Error.component';
+function Profile({ getProfile, user }) {
+  const { profile, isLoading, error } = user;
+  const [loadFeed, setLoadFeed] = useState(false);
 
+  useEffect(() => {
+    // There is no need to fetch user account again
+    //getProfile("LWPqNfL8yqMshLppoowyKJ9uEt02")
+  }, []);
 
-function Profile({ getProfile, user })
-{ 
-    const { profile, isLoading, error } = user
-    const [loadFeed,setLoadFeed]= useState(false)
+  useEffect(() => {
+    if (loadFeed) {
+      setLoadFeed(false);
+    }
+    // setLoadFeed(false)
+  }, [loadFeed]);
 
-    useEffect(() =>
-    {
-           
-        // There is no need to fetch user account again 
-//getProfile("LWPqNfL8yqMshLppoowyKJ9uEt02")
-         
-       }, [])
-    
-       useEffect(() => {
-        console.log(loadFeed + " outside");
-        if (loadFeed) {
-            setLoadFeed(false)
-            
- 
-        }
-       // setLoadFeed(false)
-    }, [loadFeed])
-    
-       let profileFeed;
+  let profileFeed;
 
-       if (isLoading) {
-           profileFeed = <SkeletonLoader/>
-       }else if(error){
-           profileFeed=<Error 
-           setLoadFeed={setLoadFeed}/>
-       }else{
-           profileFeed = profile &&
-           <>
-           <ProfileCard  />
-           <EditProfile  />
-           </>
-       }
-       
-     
-    return (
-        <div className="mt-7 ml-3 flex flex-col md:flex-row ">
-            { profileFeed 
-            }  
-            </div>
-    )
-} 
+  if (isLoading) {
+    profileFeed = <SkeletonLoader />;
+  } else if (error) {
+    console.log(error);
+
+    profileFeed = <Error setLoadFeed={setLoadFeed} />;
+  } else {
+    profileFeed = profile && (
+      <>
+        <ProfileCard />
+        <EditProfile />
+      </>
+    );
+  }
+
+  return (
+    <div className="mt-7 ml-3 flex flex-col md:flex-row ">{profileFeed}</div>
+  );
+}
 
 const mapStateToProps = ({ profile }) => ({
-    user:profile
-})
+  user: profile,
+});
 
-export default connect(mapStateToProps,null)(Profile)
+export default connect(mapStateToProps, null)(Profile);
